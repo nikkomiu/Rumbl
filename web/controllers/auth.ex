@@ -18,7 +18,7 @@ defmodule Rumbl.Auth do
       user = user_id && repo.get(Rumbl.User, user_id) ->
         assign(conn, :current_user, user)
       true ->
-        assign(cond, :current_user, nil)
+        assign(conn, :current_user, nil)
     end
   end
 
