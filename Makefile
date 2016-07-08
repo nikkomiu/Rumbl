@@ -26,3 +26,8 @@ deps-fetch:
 
 deps-compile:
 	mix deps.compile
+
+clean: clean-release
+
+clean-release:
+	mix release.clean --implode --force

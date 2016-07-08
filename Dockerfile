@@ -19,17 +19,18 @@ RUN mkdir -p /usr/app
 WORKDIR /usr/app
 COPY Makefile /usr/app
 
-# Get App Dependencies
+# App Dependencies
 COPY mix.exs /usr/app
 COPY mix.lock /usr/app
 RUN make deps
 
-# NodeJS Dependencies
-COPY package.json /usr/app
-RUN make assets
-
 # Copy App
 COPY . /usr/app
 
+# NodeJS Dependencies
+RUN make assets
+
 # Build App
 RUN make build
+
+ENTRYPOINT ["rel/rumbl/bin/rumbl", "start", "&&", "tail -f /var/log/*"]
