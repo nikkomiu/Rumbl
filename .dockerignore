@@ -1,0 +1,5 @@
+deps/
+.git/
+node_modules/
+
+_build/
